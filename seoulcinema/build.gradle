@@ -19,6 +19,8 @@ repositories {
 }
 
 dependencies {
+	// oracle
+	implementation group: 'com.oracle.database.jdbc', name: 'ojdbc8', version: '23.2.0.0'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
