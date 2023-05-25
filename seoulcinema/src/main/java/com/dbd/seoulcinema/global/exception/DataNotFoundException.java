@@ -6,8 +6,8 @@ import org.springframework.http.HttpStatus;
 @Getter
 public class DataNotFoundException extends CustomException {
 
-    public DataNotFoundException() {
-        super(ErrorCode.TARGET_ENUM_NOT_FOUND);
+    public DataNotFoundException(ErrorCode errorCode) {
+        super(errorCode);
     }
 
   /*  public DataNotFoundException(HttpStatus httpStatus, String desc){

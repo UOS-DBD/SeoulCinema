@@ -2,6 +2,7 @@ package com.dbd.seoulcinema.global.utils;
 
 import com.dbd.seoulcinema.domain.enumeration.CommonDescCode;
 import com.dbd.seoulcinema.global.exception.DataNotFoundException;
+import com.dbd.seoulcinema.global.exception.ErrorCode;
 import lombok.NoArgsConstructor;
 import org.thymeleaf.util.StringUtils;
 
@@ -21,7 +22,7 @@ public class EnumCodeConverterUtils {
                 .stream()
                 .filter(f -> f.getCode().equals(code))
                 .findAny()
-                .orElseThrow(() -> new DataNotFoundException());
+                .orElseThrow(() -> new DataNotFoundException(ErrorCode.TARGET_ENUM_NOT_FOUND));
     }
 
 
