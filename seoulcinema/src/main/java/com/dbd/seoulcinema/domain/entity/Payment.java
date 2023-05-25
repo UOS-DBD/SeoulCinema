@@ -1,15 +1,10 @@
 package com.dbd.seoulcinema.domain.entity;
 
 import java.time.LocalDate;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+
+import com.dbd.seoulcinema.domain.enumeration.PaymentType;
+import com.dbd.seoulcinema.global.utils.PaymentTypeConverter;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -40,8 +35,10 @@ public class Payment {
     @Column(name = "BANK_NAME", length = 14)
     private String bankName;
 
-    @Column(name = "PAYMENT_APPROVE_NUMBER",length = 36)
+    @Column(name = "PAYMENT_APPROVE_NUMBER", length = 36)
     private String paymentApproveNumber;
 
-    //TODO(결제구분코드)
+    @Column(name = "PAYMENT_TYPE_CODE")
+    @Convert(converter = PaymentTypeConverter.class)
+    private PaymentType paymentType;
 }

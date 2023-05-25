@@ -1,10 +1,10 @@
 package com.dbd.seoulcinema.domain.entity;
 
 import java.time.LocalDate;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+
+import com.dbd.seoulcinema.domain.enumeration.ClientGrade;
+import com.dbd.seoulcinema.global.utils.ClientGradeConverter;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,10 +18,10 @@ import lombok.NoArgsConstructor;
 public class Member {
 
     @Id
-    @Column(name = "CLIENT_ID",length = 20)
+    @Column(name = "CLIENT_ID", length = 20)
     private String clientId;
 
-    @Column(name = "PASSWORD",length = 64)
+    @Column(name = "PASSWORD", length = 64)
     private String password;
 
     @Column(name = "PHONE_NUMBER")
@@ -30,7 +30,9 @@ public class Member {
     @Column(name = "POINT")
     private Long point;
 
-    //TODO(고객 등급 코드)
+    @Column(name = "CLIENT_GRADE_CODE")
+    @Convert(converter = ClientGradeConverter.class)
+    private ClientGrade clientGrade;
 
     @Column(name = "BIRTH")
     private LocalDate localDate;

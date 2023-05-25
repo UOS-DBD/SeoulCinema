@@ -1,12 +1,13 @@
 package com.dbd.seoulcinema.domain.entity;
 
+import com.dbd.seoulcinema.domain.enumeration.MovieGenre;
+import com.dbd.seoulcinema.domain.enumeration.MovieGrade;
 import com.dbd.seoulcinema.domain.enumeration.ScreeningStatus;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+
+import javax.persistence.*;
+
+import com.dbd.seoulcinema.global.utils.MovieGenreConverter;
+import com.dbd.seoulcinema.global.utils.MovieGradeConverter;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,7 +20,8 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Movie {
 
-    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "MOVIE_NUMBER")
     private Long movieMovie;
 
@@ -29,7 +31,13 @@ public class Movie {
     @Column(name = "RUNNING_TIME", length = 5)
     private String runningTime;
 
-    //TODO(영화장르코드,영화등급코드)
+    @Column(name = "MOVIE_GRNRE_CODE")
+    @Convert(converter = MovieGenreConverter.class)
+    private MovieGenre movieGenre;
+
+    @Column(name = "MOVIE_GRADE_CODE")
+    @Convert(converter = MovieGradeConverter.class)
+    private MovieGrade movieGrade;
 
     @Column(name = "MOVIE_INTRODUCTION", length = 256)
     private String movieIntroduction;
