@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 @SpringBootTest
-@Rollback(value = false)
 class MovieTest {
 
     @PersistenceContext
