@@ -4,8 +4,6 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
-.idea/dataSources.local.xml
-.idea/dataSources/3c1d8492-0bd5-46b0-9bb9-039f220bda58.xml
 
 ### STS ###
 .apt_generated
@@ -20,7 +18,7 @@ bin/
 !**/src/test/**/bin/
 
 ### IntelliJ IDEA ###
-.idea
+.idea/
 *.iws
 *.iml
 *.ipr
