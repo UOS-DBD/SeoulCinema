@@ -1,14 +1,13 @@
 package com.dbd.seoulcinema.domain.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+
+import com.dbd.seoulcinema.domain.enumeration.ParticipantType;
+import com.dbd.seoulcinema.global.utils.ParticipantTypeConverter;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
@@ -16,14 +15,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Builder
+@Getter
 public class Participant {
 
-    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "PARTICIPANT_NUMBER")
     private Long ParticipantNumber;
 
     @Column(name = "PARTICIPANT_NAME", length = 16)
     private String participantName;
 
-    //TODO(관계자코드)
+    @Column(name = "PARTICIPANT_CODE")
+    @Convert(converter = ParticipantTypeConverter.class)
+    private ParticipantType participantType;
 }
